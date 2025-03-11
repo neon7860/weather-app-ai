@@ -14,6 +14,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ handleSearch }) => {
       e.preventDefault(); // Prevents form submission default behavior
       console.log(input);
       handleSearch(input);
+      setInput("");
     }
   };
 
@@ -28,7 +29,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ handleSearch }) => {
           onKeyDown={handleKeyDown}
           className={styles.searchBar}
         />
-        <button type="submit">Search</button>
       </form>
     </div>
   )
