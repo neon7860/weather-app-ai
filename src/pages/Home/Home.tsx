@@ -1,12 +1,14 @@
 import React from 'react'
-import SearchBar from '../components/SearchBar/SearchBar'
+import SearchBar from '../../components/SearchBar/SearchBar'
+import styles from './home.module.css'
 
 const Home: React.FC = () => {
 
-  const [city, setCity] = React.useState<string>("")
+  const [place, setPlace] = React.useState<string>("")
+  const [temp, setTemp] = React.useState<number>(0)
 
   const handleSearch = (searchTerm: string) => {
-    setCity(searchTerm)
+    setPlace(searchTerm)
     fetchAPI(searchTerm)
   }
 
@@ -15,6 +17,8 @@ const Home: React.FC = () => {
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=metric&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`)
       const data = await response.json()
       console.log(data)
+      console.log(Math.round(data.main.temp))
+      setTemp(Math.round(data.main.temp))
     } catch(err){
       console.error(err)
     }
@@ -22,7 +26,13 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      {city && <h1>{city}</h1>}
+      <div className={styles.placeOuterContainer}>
+        {place && 
+        <div className={styles.placeContainer}>
+          <h1>{place}</h1>
+          <p>{temp}°C</p>
+        </div>}
+      </div>
       <SearchBar 
         handleSearch={handleSearch}
       />

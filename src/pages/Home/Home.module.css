@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.placeOuterContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.placeContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 35px;
+    opacity: 70%;
+    width: 40%;
+    max-width: 100%;
+}
