@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchBar from '../../components/SearchBar/SearchBar'
+import ForecastCard  from '../../components/ForecastCard/ForecastCard'
 import styles from './home.module.css'
 
 const Home: React.FC = () => {
@@ -35,6 +36,9 @@ const Home: React.FC = () => {
       </div>
       <SearchBar 
         handleSearch={handleSearch}
+      />
+      <ForecastCard
+        place={place}
       />
     </div>
   )
