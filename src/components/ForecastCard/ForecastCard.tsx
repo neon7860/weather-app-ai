@@ -2,16 +2,30 @@ import React from 'react';
 import styles from './forecastCard.module.css';
 
 interface ForecastCardProps {
-    place: (searchTerm: string) => void;
+    place: string;
   }
 
 const ForecastCard: React.FC<ForecastCardProps> = ({ place }) => {
 
-    const fetchForecast = async () => {
+    const [forecast, setForecast] = React.useState<any[]>([])
+
+    React.useEffect(() => {
+        if (place){
+            fetchForecast(place)
+        }
+    }, [place])
+
+    const fetchForecast = async (place: string) => {
         try{
             const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${place}&cnt=40&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`)
             const data = await response.json()
-            console.log(data)
+            const filteredData = data.list
+            const FilteredDataArr = []
+            for (let i = 1; i < 5; i++) {
+                FilteredDataArr.push(filteredData[i])
+            }
+            setForecast(FilteredDataArr)
+            console.log("Filtered Data Array:", FilteredDataArr)
         } catch(err){
             console.error(err)
         }
@@ -21,7 +35,12 @@ const ForecastCard: React.FC<ForecastCardProps> = ({ place }) => {
   return (
     <div className={styles.container}>
       <div>
-        <button onClick={fetchForecast}>Fetch Forecast</button>
+        {forecast.map((item) => (
+            <div>
+                <p>{item.dt_txt}</p>
+                <p>{item.main.temp}°C</p>
+            </div>
+        ))}
       </div>
     </div>
   );
