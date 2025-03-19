@@ -14,7 +14,6 @@
 
 .placeContainer{
     display: flex;
-    flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
@@ -26,4 +25,11 @@
     opacity: 70%;
     width: 40%;
     max-width: 100%;
+}
+
+.placeTempContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

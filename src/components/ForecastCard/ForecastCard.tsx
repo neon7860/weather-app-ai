@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './forecastCard.module.css';
+import styles from './ForecastCard.module.css';
 
 interface ForecastCardProps {
     place: string;
@@ -17,7 +17,7 @@ const ForecastCard: React.FC<ForecastCardProps> = ({ place }) => {
 
     const fetchForecast = async (place: string) => {
         try{
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${place}&cnt=40&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`)
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${place}&cnt=40&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}&units=metric`)
             const data = await response.json()
             const filteredData = data.list
             const FilteredDataArr = []
@@ -34,9 +34,9 @@ const ForecastCard: React.FC<ForecastCardProps> = ({ place }) => {
 
   return (
     <div className={styles.container}>
-      <div>
-        {forecast.map((item) => (
-            <div>
+      <div className={styles.ForecastContainer}>
+        {forecast.map((item, index) => (
+            <div className={styles.ForecastCard} key={index}>
                 <p>{item.dt_txt}</p>
                 <p>{item.main.temp}°C</p>
             </div>

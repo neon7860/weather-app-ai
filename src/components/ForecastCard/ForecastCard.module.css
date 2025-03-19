@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ForecastContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 45px;
+    max-width: 70%;
+}
+
+
+.ForecastCard{
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 35px;
+    opacity: 70%;
+}

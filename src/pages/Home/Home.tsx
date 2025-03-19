@@ -10,7 +10,6 @@ const Home: React.FC = () => {
   const [icon, setIcon] = React.useState<string>("")
 
   const handleSearch = (searchTerm: string) => {
-    setPlace(searchTerm)
     fetchAPI(searchTerm)
   }
 
@@ -18,10 +17,11 @@ const Home: React.FC = () => {
     try{
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=metric&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`)
       const data = await response.json()
-      console.log(data.weather[0].icon)
+      console.log(data)
       console.log(Math.round(data.main.temp))
       setTemp(Math.round(data.main.temp))
       setIcon(data.weather[0].icon)
+      setPlace(data.name)
     } catch(err){
       console.error(err)
     }
@@ -32,7 +32,7 @@ const Home: React.FC = () => {
       <div className={styles.placeOuterContainer}>
         {place && 
         <div className={styles.placeContainer}>
-          <div>
+          <div className={styles.placeTempContainer}>
             <h1>{place}</h1>
             <p>{temp}°C</p>
           </div>
