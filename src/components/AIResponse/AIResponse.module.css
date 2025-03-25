@@ -19,4 +19,13 @@
     margin-top: 45px;
     max-width: 70%;
     width: 100%;
+    height: 15rem;
+    display: flex;
+    align-items: center;
+}
+
+.response{
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
 }
