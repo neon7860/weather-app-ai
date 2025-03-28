@@ -54,6 +54,7 @@ const AIResponse: React.FC<AIResponseProps> = ({ data }) => {
 
     React.useEffect(() => {
         if (data){
+            setResponse("")
             generateResponse()
         }
     }, [data])
