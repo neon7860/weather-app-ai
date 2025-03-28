@@ -37,4 +37,15 @@
 .icon{
     width: 60px;
     height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.icon:hover {
+    transform: rotate(10deg) scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .placeContainer {
+        width: 90%;
+    }
 }
