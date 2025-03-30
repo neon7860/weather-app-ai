@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import { FC, useState, KeyboardEvent } from "react";
 import styles from "./searchBar.module.css"; // Import CSS module
 
 interface SearchBarProps {
   handleSearch: (searchTerm: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ handleSearch }) => {
+const SearchBar: FC<SearchBarProps> = ({ handleSearch }) => {
 
-  const [input, setInput] = React.useState<string>("");
+  const [input, setInput] = useState<string>("");
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       e.preventDefault(); // Prevents form submission default behavior
       console.log(input);

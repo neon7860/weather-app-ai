@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import Home from './pages/Home/Home'
 
 function App() {

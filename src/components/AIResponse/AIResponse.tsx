@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, useState, useEffect } from "react";
 import styles from "./AIResponse.module.css";
 import OpenAI from "openai";
 
@@ -12,9 +12,8 @@ if (!apiKey) {
 }
 const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
 
-const AIResponse: React.FC<AIResponseProps> = ({ data }) => {
-
-    const [response, setResponse] = React.useState<any>("");
+const AIResponse: FC<AIResponseProps> = ({ data }) => {
+    const [response, setResponse] = useState<any>("");
 
     const generateResponse = async () => {
         try {
@@ -52,7 +51,7 @@ const AIResponse: React.FC<AIResponseProps> = ({ data }) => {
         }
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (data){
             setResponse("")
             generateResponse()

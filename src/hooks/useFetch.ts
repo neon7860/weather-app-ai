@@ -1,12 +1,12 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
 export const useFetch = (url: string) => {
 
-    const [data, setData] = React.useState<any>(null);
-    const [loading, setLoading] = React.useState<boolean>(true);
-    const [error, setError] = React.useState<string | null>(null);
+    const [data, setData] = useState<any>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const fetchData = async () => {
             try{
                 const response = await fetch(url)
