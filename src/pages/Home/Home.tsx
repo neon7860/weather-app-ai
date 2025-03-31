@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import ForecastCard from '../../components/ForecastCard/ForecastCard'
 import AIResponse from '../../components/AIResponse/AIResponse'
-import styles from './home.module.css'
+import styles from './Home.module.css'
 
 const Home: FC = () => {
   const [place, setPlace] = useState<string>("")
