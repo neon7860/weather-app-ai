@@ -1,5 +1,5 @@
 import { FC, useState, KeyboardEvent } from "react";
-import styles from "./searchBar.module.css"; // Import CSS module
+import styles from "./SearchBar.module.css"; // Import CSS module
 
 interface SearchBarProps {
   handleSearch: (searchTerm: string) => void;
