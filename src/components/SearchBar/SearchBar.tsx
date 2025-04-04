@@ -23,7 +23,7 @@ const SearchBar: FC<SearchBarProps> = ({ handleSearch }) => {
       <form>
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Search a location..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}

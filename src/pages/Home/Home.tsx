@@ -32,13 +32,16 @@ const Home: FC = () => {
   return (
     <div>
       <div className={styles.placeOuterContainer}>
-        {place &&
+        {place ?
           <div className={styles.placeContainer}>
             <div className={styles.placeTempContainer}>
               <h1>{place}</h1>
               <p>{temp}°C</p>
             </div>
             <img className={styles.icon} src={`http://openweathermap.org/img/w/${icon}.png`} alt="weather icon" />
+          </div> :
+          <div className={styles.placeContainer}>
+            <h1>🌤️ WeatherWise</h1>
           </div>}
       </div>
       <SearchBar
