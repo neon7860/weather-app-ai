@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import styles from './ForecastCard.module.css';
+import { useFetch } from '../../hooks/useFetch';
 
 interface ForecastCardProps {
     place: string;
@@ -8,25 +9,21 @@ interface ForecastCardProps {
 const ForecastCard: FC<ForecastCardProps> = ({ place }) => {
     const [forecast, setForecast] = useState<any[]>([])
 
-    useEffect(() => {
-        if (place) {
-            fetchForecast(place)
-        }
-    }, [place])
+    const {data, loading, error} = useFetch(place ? `https://api.openweathermap.org/data/2.5/forecast?q=${place}&exclude=hourly,daily&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}&units=metric`: "")
 
-    const fetchForecast = async (place: string) => {
-        try {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${place}&exclude=hourly,daily&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}&units=metric`)
-            const data = await response.json()
+    useEffect(() => {
+        if (data && data !== forecast) {
             const filteredData = data.list
             const dailyForecast = filteredData.filter((item: any) => item.dt_txt.includes("12:00:00"))
             const FilteredDataArr = dailyForecast.slice(0, 4)
             setForecast(FilteredDataArr)
-            console.log("new filtered data:", FilteredDataArr)
-        } catch (err) {
-            console.error(err)
         }
+    }, [data])
+
+    if (error) {
+        console.error("Error fetching data:", error)
     }
+
 
     return (
         <div className={styles.container}>
