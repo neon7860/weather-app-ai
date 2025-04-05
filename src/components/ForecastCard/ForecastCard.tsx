@@ -9,7 +9,7 @@ interface ForecastCardProps {
 const ForecastCard: FC<ForecastCardProps> = ({ place }) => {
     const [forecast, setForecast] = useState<any[]>([])
 
-    const {data, loading, error} = useFetch(place ? `https://api.openweathermap.org/data/2.5/forecast?q=${place}&exclude=hourly,daily&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}&units=metric`: "")
+    const {data, error} = useFetch(place ? `https://api.openweathermap.org/data/2.5/forecast?q=${place}&exclude=hourly,daily&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}&units=metric`: "")
 
     useEffect(() => {
         if (data && data !== forecast) {

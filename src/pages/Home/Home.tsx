@@ -16,7 +16,7 @@ const Home: FC = () => {
     setSearchTerm(searchTerm)
   }
 
-      const {data, loading, error} = useFetch(searchTerm ? `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=metric&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}` : "")
+      const {data, error} = useFetch(searchTerm ? `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=metric&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}` : "")
 
       useEffect(() => {
         if (data && data !== weatherData) {
